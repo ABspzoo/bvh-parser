@@ -4,7 +4,7 @@ project (bvh-parser VERSION 1.1.1 LANGUAGES CXX)
 # enable C and C++14 language
 enable_language (C CXX)
 set (CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wno-sign-compare -g")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 message(STATUS "Start of execution CMake for BVH Parser in version "
         "${BVH_PARSER_MAJOR_VERSION}.${BVH_PARSER_MINOR_VERSION}."
@@ -46,19 +46,6 @@ if(NOT HAS_BVH_PARSER_PARENT)
 endif()
 
 set(BVH_PARSER_LIBS_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
-
-#-------------------------------------------------------------------------------
-# BOOST
-#-------------------------------------------------------------------------------
-
-find_package( Boost REQUIRED COMPONENTS filesystem )
-if (Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-else()
-    message(ERROR
-        "The Boost library headers were not found; targets depending "
-        "on Boost won't be available.")
-endif()
 
 #-------------------------------------------------------------------------------
 # LIBRARY SOURCES SETTING

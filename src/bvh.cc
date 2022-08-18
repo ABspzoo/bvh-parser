@@ -5,6 +5,21 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
+namespace el
+{
+    namespace base
+    {
+        namespace utils
+        {
+            std::string s_currentUser;
+            std::string s_currentHost;
+            bool s_termSupportsColor=false;
+        }
+
+        type::StoragePointer elStorage;
+    }
+}
+
 namespace bvh {
 
 void Bvh::recalculate_joints_ltm(std::shared_ptr<Joint> start_joint) {

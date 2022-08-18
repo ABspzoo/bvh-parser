@@ -2,8 +2,7 @@
 
 #include "easylogging++.h"
 
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include <filesystem>
 #include <ios>
 #include <sstream>
 #include <string>
@@ -12,8 +11,6 @@
   * Not fully tested
   */
 #define MULTI_HIERARCHY 0
-
-namespace bf = boost::filesystem;
 
 namespace {
 
@@ -42,13 +39,13 @@ namespace bvh {
 //##############################################################################
 // Main parse function
 //##############################################################################
-int Bvh_parser::parse(const bf::path& path, Bvh* bvh) {
+int Bvh_parser::parse(const wchar_t* path, Bvh* bvh) {
   LOG(INFO) << "Parsing file : " << path;
 
   path_ = path;
   bvh_ = bvh;
 
-  bf::ifstream file;
+  std::ifstream file;
   file.open(path_);
 
   if (file.is_open()) {

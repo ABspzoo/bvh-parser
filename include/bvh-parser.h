@@ -5,12 +5,10 @@
 #include "joint.h"
 
 #include <algorithm>
-#include <boost/filesystem.hpp>
 #include <functional>
 #include <locale>
 #include <memory>
-
-namespace bf = boost::filesystem;
+#include <filesystem>
 
 namespace bvh {
 
@@ -22,7 +20,7 @@ class Bvh_parser {
    *  @param  bvh   The pointer to bvh object where parsed data will be stored
    *  @return  0 if success, -1 otherwise
    */
-  int parse(const bf::path& path, Bvh* bvh);
+  int parse(const wchar_t* path, Bvh* bvh);
 
  private:
   /** Parses single hierarchy in bvh file
@@ -70,7 +68,7 @@ class Bvh_parser {
   std::string vtos(const std::vector <float> &vector);
 
   /** The path to file that was parsed previously */
-  bf::path path_;
+  std::wstring path_;
 
   /** The bvh object to store parsed data */
   Bvh* bvh_;
