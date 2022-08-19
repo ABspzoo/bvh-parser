@@ -1,3 +1,4 @@
+#File modified by AB sp z o. o.
 cmake_minimum_required (VERSION 3.10)
 project (bvh-parser VERSION 1.1.1 LANGUAGES CXX)
 

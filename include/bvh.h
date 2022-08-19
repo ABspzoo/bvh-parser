@@ -1,3 +1,4 @@
+// File modified by AB sp z o. o.
 #ifndef BVH_H
 #define BVH_H
 
