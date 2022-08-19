@@ -10,7 +10,7 @@
 #ifdef bvhParser_EXPORTS
 #define BVHPARSER_API __declspec(dllexport)
 #else
-#define bvhParser_EXPORTS __declspec(dllimport)
+#define BVHPARSER_API __declspec(dllimport)
 #endif
 
 namespace bvh {
