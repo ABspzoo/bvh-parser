@@ -6,10 +6,16 @@
 #include <memory>
 #include <vector>
 
+#ifdef bvhParser_EXPORTS
+#define BVHPARSER_API __declspec(dllexport)
+#else
+#define bvhParser_EXPORTS __declspec(dllimport)
+#endif
+
 namespace bvh {
 
 /** Class created for storing motion data from bvh file */
-class Bvh {
+BVHPARSER_API class Bvh {
  public:
   /** Constructor of Bvh object
    *  @details  Initializes local variables

@@ -20,7 +20,7 @@ class Bvh_parser {
    *  @param  bvh   The pointer to bvh object where parsed data will be stored
    *  @return  0 if success, -1 otherwise
    */
-  int parse(const wchar_t* path, Bvh* bvh);
+   BVHPARSER_API int parse(const wchar_t* path, Bvh* bvh);
 
  private:
   /** Parses single hierarchy in bvh file
