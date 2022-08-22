@@ -5,20 +5,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace el
-{
-    namespace base
-    {
-        namespace utils
-        {
-            std::string s_currentUser;
-            std::string s_currentHost;
-            bool s_termSupportsColor=false;
-        }
-
-        type::StoragePointer elStorage;
-    }
-}
+INITIALIZE_EASYLOGGINGPP
 
 namespace bvh {
 
