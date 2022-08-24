@@ -33,7 +33,7 @@ BVHPARSER_API class Bvh {
    * matrix will be recalculated, as default it is NULL which will be resolved
    * to root_joint in method body
    */
-  void recalculate_joints_ltm(std::shared_ptr<Joint> start_joint = NULL);
+  BVHPARSER_API void recalculate_joints_ltm(std::shared_ptr<Joint> start_joint = NULL);
 
   /** Adds joint to Bvh object
    *  @details  Adds joint and increases number of data channels
