@@ -1,3 +1,4 @@
+// File modified by AB sp z o. o.
 #ifndef JOINT_H
 #define JOINT_H
 
@@ -101,7 +102,7 @@ class Joint {
   /** Gets the local transformation matrix for this joint for all frames
    *  @return  The joint's local transformation matrix
    */
-  std::vector <glm::mat4> ltm() const {
+  const std::vector <glm::mat4>& ltm() const {
     return ltm_;
   }
 
@@ -116,7 +117,7 @@ class Joint {
   /** Gets the position for this joint for all frames
    *  @return  The joint's position
    */
-  std::vector <glm::vec3> pos() const {
+  const std::vector<glm::vec3>& pos() const {
     return pos_;
   }
 
