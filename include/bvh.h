@@ -35,6 +35,18 @@ BVHPARSER_API class Bvh {
    */
   BVHPARSER_API void recalculate_joints_ltm(std::shared_ptr<Joint> start_joint = NULL);
 
+  /**
+ * Recalculation of local transformation matrix for reference pose
+ *
+ * Should be called to set local_transformation_matrix vectors in joints
+ * structures.
+ *
+ * @param start_joint  A joint of which each child local transformation
+ * matrix will be recalculated, as default it is NULL which will be resolved
+ * to root_joint in method body
+ */
+  BVHPARSER_API void recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint = NULL);
+
   /** Adds joint to Bvh object
    *  @details  Adds joint and increases number of data channels
    *  @param  joint  The joint that will be added

@@ -69,4 +69,41 @@ void Bvh::recalculate_joints_ltm(std::shared_ptr<Joint> start_joint) {
   }
 }
 
+void Bvh::recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint) {
+
+    if (start_joint == NULL)
+    {
+        if (root_joint_ == NULL)
+            return;
+        else
+            start_joint = root_joint_;
+    }
+
+    LOG(DEBUG) << "recalculate_joints_ltm: " << start_joint->name();
+
+    glm::mat4 offmat_backup = glm::translate(glm::mat4(1.0),
+        glm::vec3(start_joint->offset().x, start_joint->offset().y,
+            start_joint->offset().z));
+
+    std::vector<std::vector<float>> data = start_joint->channel_data();
+
+    glm::mat4 offmat = offmat_backup; // offset matrix
+    glm::mat4 ltm; // local transformation matrix
+
+    if (start_joint->parent() != NULL)
+        ltm = start_joint->parent()->ltm(0) * offmat;
+    else
+        ltm = offmat;
+
+    start_joint->set_pos(ltm[3], 0);
+    LOG(TRACE) << "Joint world position: " << utils::vec3tos(ltm[3]);
+    LOG(TRACE) << "Local transformation matrix: \n" << utils::mat4tos(ltm);
+
+    start_joint->set_ltm(ltm, 0);
+
+    for (auto& child : start_joint->children()) {
+        recalculate_joints_ltm_refpose(child);
+    }
+}
+
 }
