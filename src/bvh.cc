@@ -27,7 +27,7 @@ void Bvh::recalculate_joints_ltm(std::shared_ptr<Joint> start_joint) {
 
   std::vector<std::vector<float>> data = start_joint->channel_data();
 
-  for (int i = 0; i < num_frames_; i++) {
+  for (unsigned int i = 0; i < num_frames_; i++) {
     glm::mat4 offmat = offmat_backup; // offset matrix
     glm::mat4 rmat(1.0);  // identity matrix set on rotation matrix
     glm::mat4 tmat(1.0);  // identity matrix set on translation matrix

@@ -5,7 +5,6 @@ project (bvh-parser VERSION 1.1.1 LANGUAGES CXX)
 # enable C and C++14 language
 enable_language (C CXX)
 set (CMAKE_CXX_STANDARD 14)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 message(STATUS "Start of execution CMake for BVH Parser in version "
         "${BVH_PARSER_MAJOR_VERSION}.${BVH_PARSER_MINOR_VERSION}."
