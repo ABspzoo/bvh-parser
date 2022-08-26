@@ -132,7 +132,7 @@ class Joint {
   /** Gets the number of channels of this joint
    *  @return  The joint's channels number
    */
-  unsigned num_channels() const { return channels_order_.size(); }
+  unsigned num_channels() const { return (int)channels_order_.size(); }
 
   /** Sets the this joint parent joint
    *  @param   arg    The parent joint of this joint

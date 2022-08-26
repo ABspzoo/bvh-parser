@@ -16,7 +16,7 @@
 namespace bvh {
 
 /** Class created for storing motion data from bvh file */
-BVHPARSER_API class Bvh {
+class Bvh {
  public:
   /** Constructor of Bvh object
    *  @details  Initializes local variables
