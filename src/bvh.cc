@@ -19,13 +19,13 @@ void Bvh::recalculate_joints_ltm(std::shared_ptr<Joint> start_joint) {
       start_joint = root_joint_;
   }
 
-  LOG(DEBUG) << "recalculate_joints_ltm: " << start_joint->name();
+  //LOG(DEBUG) << "recalculate_joints_ltm: " << start_joint->name();
 
   glm::mat4 offmat_backup = glm::translate(glm::mat4(1.0),
         glm::vec3(start_joint->offset().x, start_joint->offset().y,
         start_joint->offset().z));
 
-  std::vector<std::vector<float>> data = start_joint->channel_data();
+  const std::vector<std::vector<float>>& data = start_joint->channel_data();
 
   for (unsigned int i = 0; i < num_frames_; i++) {
     glm::mat4 offmat = offmat_backup; // offset matrix
@@ -55,11 +55,11 @@ void Bvh::recalculate_joints_ltm(std::shared_ptr<Joint> start_joint) {
       ltm = tmat * offmat;
 
     start_joint->set_pos(ltm[3]);
-    LOG(TRACE) << "Joint world position: " << utils::vec3tos(ltm[3]);
+    //LOG(TRACE) << "Joint world position: " << utils::vec3tos(ltm[3]);
 
     ltm = ltm * rmat;
 
-    LOG(TRACE) << "Local transformation matrix: \n" << utils::mat4tos(ltm);
+    //LOG(TRACE) << "Local transformation matrix: \n" << utils::mat4tos(ltm);
 
     start_joint->set_ltm(ltm, i);
   }
@@ -79,7 +79,7 @@ void Bvh::recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint) {
             start_joint = root_joint_;
     }
 
-    LOG(DEBUG) << "recalculate_joints_ltm: " << start_joint->name();
+    //LOG(DEBUG) << "recalculate_joints_ltm: " << start_joint->name();
 
     glm::mat4 offmat_backup = glm::translate(glm::mat4(1.0),
         glm::vec3(start_joint->offset().x, start_joint->offset().y,
@@ -96,8 +96,8 @@ void Bvh::recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint) {
         ltm = offmat;
 
     start_joint->set_pos(ltm[3], 0);
-    LOG(TRACE) << "Joint world position: " << utils::vec3tos(ltm[3]);
-    LOG(TRACE) << "Local transformation matrix: \n" << utils::mat4tos(ltm);
+    //LOG(TRACE) << "Joint world position: " << utils::vec3tos(ltm[3]);
+    //LOG(TRACE) << "Local transformation matrix: \n" << utils::mat4tos(ltm);
 
     start_joint->set_ltm(ltm, 0);
 

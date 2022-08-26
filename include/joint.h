@@ -64,14 +64,14 @@ class Joint {
   /** Gets the channels order of this joint
    *  @return  The joint's channels order
    */
-  std::vector <Channel> channels_order() const {
+  const std::vector <Channel>& channels_order() const {
     return channels_order_;
   }
 
   /** Gets the all children joints of this joint
    *  @return  The joint's children
    */
-  std::vector <std::shared_ptr <Joint>> children() const {
+  const std::vector <std::shared_ptr <Joint>>& children() const {
     return children_;
   }
 

@@ -64,7 +64,7 @@ class Bvh {
   /** Gets all joints
    *  @return  The all joints
    */
-  const std::vector <std::shared_ptr <Joint>> joints() const {
+  const std::vector <std::shared_ptr <Joint>>& joints() const {
     return joints_;
   }
 
