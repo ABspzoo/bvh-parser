@@ -35,7 +35,7 @@ class Bvh {
    */
   BVHPARSER_API void recalculate_joints_ltm(std::shared_ptr<Joint> start_joint = NULL);
 
-  /**
+ /**
  * Recalculation of local transformation matrix for reference pose
  *
  * Should be called to set local_transformation_matrix vectors in joints
@@ -46,6 +46,15 @@ class Bvh {
  * to root_joint in method body
  */
   BVHPARSER_API void recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint = NULL);
+
+ /**
+ * Calculation of joint matrix for given frame and joint
+ *
+ * @param frame Frame number
+ * @param jointIndex Index of a joint
+ * @return Computed joint matrix
+ */
+  BVHPARSER_API glm::mat4 calculate_joint_matrix(int frame, int jointIndex);
 
   /** Adds joint to Bvh object
    *  @details  Adds joint and increases number of data channels

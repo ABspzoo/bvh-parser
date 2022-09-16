@@ -106,4 +106,32 @@ void Bvh::recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint) {
     }
 }
 
+glm::mat4 Bvh::calculate_joint_matrix(int frame, int jointIndex)
+{
+    glm::mat4 rmat(1.0);  // identity matrix set on rotation matrix
+    glm::mat4 tmat(1.0);  // identity matrix set on translation matrix
+
+    int i = frame;
+
+    std::shared_ptr<Joint> start_joint = joints_[jointIndex];
+    std::vector<std::vector<float>> data = start_joint->channel_data();
+
+    for (int j = 0;  j < start_joint->channels_order().size(); j++) {
+      if (start_joint->channels_order()[j] == Joint::Channel::XPOSITION)
+        tmat = glm::translate(tmat, glm::vec3(data[i][j], 0, 0));
+      else if (start_joint->channels_order()[j] == Joint::Channel::YPOSITION)
+        tmat = glm::translate(tmat, glm::vec3(0, data[i][j], 0));
+      else if (start_joint->channels_order()[j] == Joint::Channel::ZPOSITION)
+        tmat = glm::translate(tmat, glm::vec3(0, 0, data[i][j]));
+      else if (start_joint->channels_order()[j] == Joint::Channel::XROTATION)
+        rmat = utils::rotate(rmat, data[i][j], utils::Axis::X);
+      else if (start_joint->channels_order()[j] == Joint::Channel::YROTATION)
+        rmat = utils::rotate(rmat, data[i][j], utils::Axis::Y);
+      else if (start_joint->channels_order()[j] == Joint::Channel::ZROTATION)
+        rmat = utils::rotate(rmat, data[i][j], utils::Axis::Z);
+    }
+
+    return tmat * rmat;
+}
+
 }
