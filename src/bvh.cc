@@ -85,8 +85,6 @@ void Bvh::recalculate_joints_ltm_refpose(std::shared_ptr<Joint> start_joint) {
         glm::vec3(start_joint->offset().x, start_joint->offset().y,
             start_joint->offset().z));
 
-    std::vector<std::vector<float>> data = start_joint->channel_data();
-
     glm::mat4 offmat = offmat_backup; // offset matrix
     glm::mat4 ltm; // local transformation matrix
 
@@ -113,8 +111,8 @@ glm::mat4 Bvh::calculate_joint_matrix(int frame, int jointIndex)
 
     int i = frame;
 
-    std::shared_ptr<Joint> start_joint = joints_[jointIndex];
-    std::vector<std::vector<float>> data = start_joint->channel_data();
+    const std::shared_ptr<Joint>& start_joint = joints_[jointIndex];
+    const std::vector<std::vector<float>>& data = start_joint->channel_data();
 
     for (int j = 0;  j < start_joint->channels_order().size(); j++) {
       if (start_joint->channels_order()[j] == Joint::Channel::XPOSITION)
